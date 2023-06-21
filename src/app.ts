@@ -5,6 +5,7 @@ import {config} from '@/api/config';
 import {contentSecurityPolicy} from '@/utils/utils';
 import {logger} from '@/infrastructure/logging/logger';
 import {errorHandler, notFoundHandler} from '@/api/config/middlewares';
+import {ApiRoute} from './api/config/routes';
 
 const app: Application = express();
 
@@ -40,6 +41,9 @@ const env = config.NODE_ENV;
     app.get('/health', async (_req: Request, res: Response) => {
       res.status(200).json({uptime: process.uptime()});
     });
+
+    // API routers
+    app.use('/api', ApiRoute);
 
     // Initialise handlers or middleware
     app.use(errorHandler);

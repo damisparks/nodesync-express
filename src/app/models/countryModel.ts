@@ -26,4 +26,4 @@ const countrySchema = new Schema<ICountry>({
   startOfWeek: {type: String, default: ''},
 });
 
-export const Campus = model<ICountry>('Country', countrySchema, 'countries');
+export const Country = model<ICountry>('Country', countrySchema, 'countries');

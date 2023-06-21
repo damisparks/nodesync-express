@@ -3,6 +3,10 @@ import {Router} from 'express';
 
 const router = Router();
 
-router.get('/all', countryController.getCountry);
+// Retrieve all countries
+router.get('/', countryController.getAllCountries);
+
+// Retrieve a single country with id
+router.get('/:id', countryController.getCountryById);
 
 export const CountryApiRoute: Router = router;

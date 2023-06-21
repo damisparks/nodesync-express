@@ -88,14 +88,3 @@ export interface ICountry {
     };
   };
 }
-
-// "name": {
-//   "common": "Jordan",
-//   "official": "Hashemite Kingdom of Jordan",
-//   "nativeName": {
-//     "ara": {
-//       "official": "المملكة الأردنية الهاشمية",
-//       "common": "الأردن"
-//     }
-//   }
-// },

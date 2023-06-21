@@ -3,14 +3,20 @@ import {Country} from '../countryModel';
 import {logger} from '@/infrastructure/logging/logger';
 
 interface CountryService {
-  getCountry(): Promise<{allCountries: ICountry[]}>;
+  getAllCountries(): Promise<{allCountries: ICountry[]}>;
+  getCountryById(id: string): Promise<ICountry | null>;
 }
 
 const countryService: CountryService = {
-  getCountry: async () => {
+  getAllCountries: async () => {
     const data = await Country.find({});
     logger.info('CountryService.getCountry', data);
     return {allCountries: data};
+  },
+  getCountryById: async (id: string) => {
+    const data = await Country.findById(id);
+    logger.info('CountryService.getCountryById', data);
+    return data;
   },
 };
 

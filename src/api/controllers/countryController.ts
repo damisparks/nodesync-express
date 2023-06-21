@@ -32,7 +32,24 @@ const getCountryById = async (
   }
 };
 
+const deleteCountry = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const {id} = req.params;
+    logger.info('CountryController.deleteCountry', id);
+    const country = await countryService.deleteCountry(id);
+    res.status(200).json(country);
+  } catch (e) {
+    logger.error('Error deleting country: ', e);
+    next(e);
+  }
+};
+
 export const countryController = {
   getAllCountries,
   getCountryById,
+  deleteCountry,
 };

@@ -5,7 +5,8 @@ import {config} from '@/api/config';
 import {contentSecurityPolicy} from '@/utils/utils';
 import {logger} from '@/infrastructure/logging/logger';
 import {errorHandler, notFoundHandler} from '@/api/config/middlewares';
-import {ApiRoute} from './api/config/routes';
+import {ApiRoute} from '@/api/config/routes';
+import {connectDb} from '@/infrastructure/database';
 
 const app: Application = express();
 
@@ -26,12 +27,15 @@ const env = config.NODE_ENV;
     // DNS Prefetch Control
     app.use(helmet.dnsPrefetchControl());
 
-    app.use(cors());
-    app.use(helmet());
-
     // Parse incoming requests data
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
+
+    app.use(cors());
+
+    // Dabase connection
+    connectDb(config.DB_URL);
+    logger.info(`Database URL: ${config.DB_URL}`);
 
     app.get('/', (req: Request, res: Response) => {
       res.send('Hello World! See 👉🏾 /api/v0/');

@@ -32,7 +32,12 @@ const env = config.NODE_ENV;
     app.use(express.urlencoded({extended: true}));
 
     app.get('/', (req: Request, res: Response) => {
-      res.send('Hello World!');
+      res.send('Hello World! See 👉🏾 /api/v0/');
+    });
+
+    // Health URI call
+    app.get('/health', async (_req: Request, res: Response) => {
+      res.status(200).json({uptime: process.uptime()});
     });
 
     app.listen(port, () => {

@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import {config} from './api/config';
 import {contentSecurityPolicy} from './utils/utils';
+import {logger} from './infrastructure/logging/logger';
 
 const app: Application = express();
 
@@ -25,6 +26,8 @@ const env = config.NODE_ENV;
 
     app.use(cors());
     app.use(helmet());
+
+    // Parse incoming requests data
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
 
@@ -33,7 +36,11 @@ const env = config.NODE_ENV;
     });
 
     app.listen(port, () => {
-      console.log(`Server is listening on port ${port} in ${env} mode`);
+      logger.info(`Server is listening on port ${port} in ${env} mode`);
+      logger.info('=================================');
+      logger.info(`🚀 NodeSync Express is up and running at ${port}`);
+      logger.info('=================================');
+      logger.info('press CTRL+C to stop server');
     });
   } catch (e) {
     console.error(e);

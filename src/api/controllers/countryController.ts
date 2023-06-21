@@ -41,7 +41,7 @@ const deleteCountry = async (
     const {id} = req.params;
     logger.info('CountryController.deleteCountry', id);
     const country = await countryService.deleteCountry(id);
-    res.status(200).json(country);
+    res.status(200).json({country, message: 'Country deleted successfully'});
   } catch (e) {
     logger.error('Error deleting country: ', e);
     next(e);

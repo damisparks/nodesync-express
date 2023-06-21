@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import {config} from '@/api/config';
 import {contentSecurityPolicy} from '@/utils/utils';
 import {logger} from '@/infrastructure/logging/logger';
+import {errorHandler, notFoundHandler} from '@/api/config/middlewares';
 
 const app: Application = express();
 
@@ -40,6 +41,10 @@ const env = config.NODE_ENV;
       res.status(200).json({uptime: process.uptime()});
     });
 
+    // Initialise handlers or middleware
+    app.use(errorHandler);
+    app.use(notFoundHandler);
+
     app.listen(port, () => {
       logger.info(`Server is listening on port ${port} in ${env} mode`);
       logger.info('=================================');
@@ -48,6 +53,6 @@ const env = config.NODE_ENV;
       logger.info('press CTRL+C to stop server');
     });
   } catch (e) {
-    console.error(e);
+    logger.error('Error starting server: ', e);
   }
 })();

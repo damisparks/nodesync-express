@@ -1,5 +1,6 @@
 import {ICountry} from '@/interfaces/countryInterface';
 import {Country} from '../countryModel';
+import {logger} from '@/infrastructure/logging/logger';
 
 interface CountryService {
   getCountry(): Promise<{allCountries: ICountry[]}>;
@@ -7,12 +8,9 @@ interface CountryService {
 
 const countryService: CountryService = {
   getCountry: async () => {
-    try {
-      const data = await Country.find({});
-      return {allCountries: data};
-    } catch (error) {
-      throw new Error(error);
-    }
+    const data = await Country.find({});
+    logger.info('CountryService.getCountry', data);
+    return {allCountries: data};
   },
 };
 

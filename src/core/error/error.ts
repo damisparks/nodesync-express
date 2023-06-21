@@ -9,6 +9,8 @@ export enum ServerErrorEnums {
   INVALID_TOKEN = 'INVALID_TOKEN',
 }
 
+export type ServerError = keyof typeof ServerErrorEnums;
+
 export enum ClientErrorCode {
   UNAUTHORIZED_TO_VIEW_RESOURCE = 'UNAUTHORIZED_TO_VIEW_RESOURCE',
   FORBIDDEN = 'FORBIDDEN',

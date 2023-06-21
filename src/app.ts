@@ -1,9 +1,9 @@
 import express, {Application, Request, Response} from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import {config} from './api/config';
-import {contentSecurityPolicy} from './utils/utils';
-import {logger} from './infrastructure/logging/logger';
+import {config} from '@/api/config';
+import {contentSecurityPolicy} from '@/utils/utils';
+import {logger} from '@/infrastructure/logging/logger';
 
 const app: Application = express();
 

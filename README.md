@@ -1,5 +1,11 @@
 ## NodeSync Express API
 
+The project is a REST API for NodeSync. It is built with 
+* [Node.js](https://nodejs.org/en/)
+* [Express](https://expressjs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Mongoose](https://mongoosejs.com/)
+* [TypeScript](https://www.typescriptlang.org/)
 
 ### Install Dependencies
 ```bash

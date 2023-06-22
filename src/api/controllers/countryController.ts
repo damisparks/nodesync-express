@@ -55,7 +55,7 @@ const createCountry = async (
 ) => {
   try {
     const country = await countryService.createCountry(req.body);
-    res.status(200).json(country);
+    res.status(200).json({country, message: 'Country created successfully'});
   } catch (e) {
     logger.error('Error creating country: ', e);
     next(e);
@@ -70,7 +70,7 @@ const updateCountry = async (
   try {
     const {countryId} = req.params;
     const country = await countryService.updateCountry(countryId, req.body);
-    res.status(200).json(country);
+    res.status(200).json({country, message: 'Country updated successfully'});
   } catch (e) {
     logger.error('Error updating country: ', e);
     next(e);

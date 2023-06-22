@@ -62,9 +62,25 @@ const createCountry = async (
   }
 };
 
+const updateCountry = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const {id} = req.params;
+    const country = await countryService.updateCountry(id, req.body);
+    res.status(200).json(country);
+  } catch (e) {
+    logger.error('Error updating country: ', e);
+    next(e);
+  }
+};
+
 export const countryController = {
   getAllCountries,
   getCountryById,
   deleteCountry,
   createCountry,
+  updateCountry,
 };

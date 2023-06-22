@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', countryController.getAllCountries);
 
 // Create a new country
-// router.post('/', countryController.createCountry);
+router.post('/', countryController.createCountry);
 
 // Retrieve a single country with id
 router.get('/:id', countryController.getCountryById);

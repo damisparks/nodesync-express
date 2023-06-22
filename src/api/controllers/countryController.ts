@@ -48,8 +48,23 @@ const deleteCountry = async (
   }
 };
 
+const createCountry = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const country = await countryService.createCountry(req.body);
+    res.status(200).json(country);
+  } catch (e) {
+    logger.error('Error creating country: ', e);
+    next(e);
+  }
+};
+
 export const countryController = {
   getAllCountries,
   getCountryById,
   deleteCountry,
+  createCountry,
 };

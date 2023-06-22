@@ -1,5 +1,4 @@
 export interface ICountry {
-  common: string;
   official: string;
   alpha2Code: string;
   alpha3Code: string;

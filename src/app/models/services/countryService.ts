@@ -6,15 +6,21 @@ interface CountryService {
   getAllCountries(): Promise<{allCountries: ICountry[]}>;
   getCountryById(id: string): Promise<ICountry | null>;
   deleteCountry(id: string): Promise<ICountry | null>;
+  createCountry(country: ICountry): Promise<ICountry>;
 }
 /**
  * @name countryService
- * @description CountryService is a service layer that handles the country CRUD logic of the application
+ * @description Country service layer
  */
 const countryService: CountryService = {
+  createCountry: async (country: ICountry): Promise<ICountry> => {
+    const data = await Country.create(country);
+    logger.info('CountryService.createCountry', data);
+    return data;
+  },
   /**
    * @name getAllCountries
-   * @description getAllCountries is a service layer for retrieving all countries
+   * @description Get all countries
    * @returns {Promise<{allCountries: ICountry[]}>}
    */
   getAllCountries: async (): Promise<{allCountries: ICountry[]}> => {
@@ -26,7 +32,7 @@ const countryService: CountryService = {
   /**
    * @name getCountryById
    * @param id Country ID
-   * @description getCountryById is a service layer for retrieving a country by ID
+   * @description Get a ccountry resource by ID
    * @returns {Promise<ICountry | null>}
    */
   getCountryById: async (id: string): Promise<ICountry | null> => {
@@ -38,7 +44,7 @@ const countryService: CountryService = {
   /**
    *  @name deleteCountry
    * @param id Country ID
-   * @description deleteCountry is a service layer for deleting a country by ID
+   * @description Delete a country resource by ID
    */
   deleteCountry: async (id: string): Promise<ICountry | null> => {
     const data = await Country.findByIdAndDelete(id);

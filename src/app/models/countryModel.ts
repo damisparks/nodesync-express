@@ -3,7 +3,6 @@ import {ICountry} from '@/interfaces/countryInterface';
 
 const countrySchema = new Schema<ICountry>(
   {
-    common: {type: String, default: ''},
     independent: {type: Boolean, default: false},
     status: {type: String, default: ''},
     subregion: {type: String, default: ''},

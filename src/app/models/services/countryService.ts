@@ -5,8 +5,9 @@ import {logger} from '@/infrastructure/logging/logger';
 interface CountryService {
   getAllCountries(): Promise<{allCountries: ICountry[]}>;
   getCountryById(id: string): Promise<ICountry | null>;
-  deleteCountry(id: string): Promise<ICountry | null>;
   createCountry(country: ICountry): Promise<ICountry>;
+  updateCountry(id: string, country: ICountry): Promise<ICountry | null>;
+  deleteCountry(id: string): Promise<ICountry | null>;
 }
 /**
  * @name countryService
@@ -56,6 +57,22 @@ const countryService: CountryService = {
   deleteCountry: async (id: string): Promise<ICountry | null> => {
     const data = await Country.findByIdAndDelete(id);
     logger.info('CountryService.deleteCountry', data);
+    return data;
+  },
+
+  /**
+   * @name updateCountry
+   * @param id  Country ID
+   * @param country  Country object
+   * @description Update a country resource by ID
+   * @returns {Promise<ICountry | null>}
+   */
+  updateCountry: async (
+    id: string,
+    country: ICountry
+  ): Promise<ICountry | null> => {
+    const data = await Country.findByIdAndUpdate(id, country);
+    logger.info('CountryService.updateCountry', data);
     return data;
   },
 };

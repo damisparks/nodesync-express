@@ -13,6 +13,13 @@ interface CountryService {
  * @description Country service layer
  */
 const countryService: CountryService = {
+  /**
+   * @name createCountry
+   * @param country Country object
+   * @description Create a new country resource
+   * @returns {Promise<ICountry>}
+   *
+   */
   createCountry: async (country: ICountry): Promise<ICountry> => {
     const data = await Country.create(country);
     logger.info('CountryService.createCountry', data);

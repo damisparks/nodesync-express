@@ -1,9 +1,12 @@
 import express, {Application, Request, Response} from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import {config} from './api/config';
-import {contentSecurityPolicy} from './utils/utils';
-import {logger} from './infrastructure/logging/logger';
+import {config} from '@/api/config';
+import {contentSecurityPolicy} from '@/utils/utils';
+import {logger} from '@/infrastructure/logging/logger';
+import {errorHandler, notFoundHandler} from '@/api/config/middlewares';
+import {ApiRoute} from '@/api/config/routes';
+import {connectDb} from '@/infrastructure/database';
 
 const app: Application = express();
 
@@ -24,12 +27,15 @@ const env = config.NODE_ENV;
     // DNS Prefetch Control
     app.use(helmet.dnsPrefetchControl());
 
-    app.use(cors());
-    app.use(helmet());
-
     // Parse incoming requests data
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
+
+    app.use(cors());
+
+    // Dabase connection
+    connectDb(config.DB_URL);
+    logger.info(`Database URL: ${config.DB_URL}`);
 
     app.get('/', (req: Request, res: Response) => {
       res.send('Hello World! See 👉🏾 /api/v0/');
@@ -40,6 +46,13 @@ const env = config.NODE_ENV;
       res.status(200).json({uptime: process.uptime()});
     });
 
+    // API routers
+    app.use('/api', ApiRoute);
+
+    // Initialise handlers or middleware
+    app.use(errorHandler);
+    app.use(notFoundHandler);
+
     app.listen(port, () => {
       logger.info(`Server is listening on port ${port} in ${env} mode`);
       logger.info('=================================');
@@ -48,6 +61,6 @@ const env = config.NODE_ENV;
       logger.info('press CTRL+C to stop server');
     });
   } catch (e) {
-    console.error(e);
+    logger.error('Error starting server: ', e);
   }
 })();

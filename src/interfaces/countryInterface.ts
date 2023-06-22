@@ -1,8 +1,5 @@
 export interface ICountry {
-  name: string;
-  common: string;
   official: string;
-  nativeName: string;
   alpha2Code: string;
   alpha3Code: string;
   callingCodes: string[];
@@ -15,7 +12,7 @@ export interface ICountry {
       symbol: string;
     };
   };
-  nativeNames: {
+  nativeName: {
     [key: string]: {
       official: string;
       common: string;
@@ -79,4 +76,14 @@ export interface ICountry {
   ccn3: string;
   cca3: string;
   // cioc: string;
+  name: {
+    common: string;
+    official: string;
+    nativeName: {
+      [key: string]: {
+        official: string;
+        common: string;
+      };
+    };
+  };
 }

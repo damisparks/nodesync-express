@@ -1,5 +1,6 @@
 import {countryController} from '@/api/controllers/countryController';
 import {Router} from 'express';
+import {checkAuth} from '../middlewares';
 
 const router = Router();
 
@@ -7,15 +8,15 @@ const router = Router();
 router.get('/', countryController.getAllCountries);
 
 // Create a new country
-router.post('/', countryController.createCountry);
+router.post('/', checkAuth, countryController.createCountry);
 
 // Retrieve a single country with id
-router.get('/:countryId', countryController.getCountryById);
+router.get('/:countryId', checkAuth, countryController.getCountryById);
 
 // Update a specific country
-router.put('/:countryId', countryController.updateCountry);
+router.put('/:countryId', checkAuth, countryController.updateCountry);
 
 // Delete a specific country
-router.delete('/:countryId', countryController.deleteCountry);
+router.delete('/:countryId', checkAuth, countryController.deleteCountry);
 
 export const CountryApiRoute: Router = router;

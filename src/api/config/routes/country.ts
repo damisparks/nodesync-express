@@ -10,12 +10,12 @@ router.get('/', countryController.getAllCountries);
 router.post('/', countryController.createCountry);
 
 // Retrieve a single country with id
-router.get('/:id', countryController.getCountryById);
+router.get('/:countryId', countryController.getCountryById);
 
 // Update a specific country
-// router.put('/:id', countryController.updateCountry);
+router.put('/:countryId', countryController.updateCountry);
 
 // Delete a specific country
-router.delete('/:id', countryController.deleteCountry);
+router.delete('/:countryId', countryController.deleteCountry);
 
 export const CountryApiRoute: Router = router;

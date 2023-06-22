@@ -22,9 +22,9 @@ const getCountryById = async (
   next: NextFunction
 ) => {
   try {
-    const {id} = req.params;
-    logger.info('CountryController.getCountryById', id);
-    const country = await countryService.getCountryById(id);
+    const {countryId} = req.params;
+    logger.info('CountryController.getCountryById', countryId);
+    const country = await countryService.getCountryById(countryId);
     res.status(200).json(country);
   } catch (e) {
     logger.error('Error getting country: ', e);
@@ -38,9 +38,9 @@ const deleteCountry = async (
   next: NextFunction
 ) => {
   try {
-    const {id} = req.params;
-    logger.info('CountryController.deleteCountry', id);
-    const country = await countryService.deleteCountry(id);
+    const {countryId} = req.params;
+    logger.info('CountryController.deleteCountry', countryId);
+    const country = await countryService.deleteCountry(countryId);
     res.status(200).json({country, message: 'Country deleted successfully'});
   } catch (e) {
     logger.error('Error deleting country: ', e);
@@ -68,8 +68,8 @@ const updateCountry = async (
   next: NextFunction
 ) => {
   try {
-    const {id} = req.params;
-    const country = await countryService.updateCountry(id, req.body);
+    const {countryId} = req.params;
+    const country = await countryService.updateCountry(countryId, req.body);
     res.status(200).json(country);
   } catch (e) {
     logger.error('Error updating country: ', e);

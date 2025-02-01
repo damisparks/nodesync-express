@@ -21,7 +21,7 @@
     "@types/cors": "2.8.17",
     "@types/express": "5.0.0",
     "@types/node": "^22.0.0",
-    "gts": "^3.1.1",
+    "gts": "^6.0.0",
     "ts-node-dev": "2.0.0",
     "tsconfig-paths": "4.2.0",
     "typescript": "~5.7.0"

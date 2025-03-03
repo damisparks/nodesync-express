@@ -18,8 +18,8 @@ dependencies:
     specifier: 8.0.0
     version: 8.0.0
   mongoose:
-    specifier: 8.10.1
-    version: 8.10.1
+    specifier: 8.12.0
+    version: 8.12.0
   winston:
     specifier: 3.17.0
     version: 3.17.0
@@ -602,6 +602,12 @@ packages:
 
   /bson@6.10.1:
     resolution: {integrity: sha512-P92xmHDQjSKPLHqFxefqMxASNq/aWJMEZugpCjf+AF/pgcUpMMQCg7t7+ewko0/u8AapvF3luf/FoehddEK+sA==}
+    engines: {node: '>=16.20.1'}
+    deprecated: a critical bug affecting only useBigInt64=true deserialization usage is fixed in bson@6.10.3
+    dev: false
+
+  /bson@6.10.3:
+    resolution: {integrity: sha512-MTxGsqgYTwfshYWTRdmZRC+M7FnG1b4y7RO7p2k3X24Wq0yv1m77Wsj0BzlPzd/IowgESfsruQCUToa7vbOpPQ==}
     engines: {node: '>=16.20.1'}
     dev: false
 
@@ -1852,8 +1858,8 @@ packages:
       whatwg-url: 13.0.0
     dev: false
 
-  /mongodb@6.13.0:
-    resolution: {integrity: sha512-KeESYR5TEaFxOuwRqkOm3XOsMqCSkdeDMjaW5u2nuKfX7rqaofp7JQGoi7sVqQcNJTKuveNbzZtWMstb8ABP6Q==}
+  /mongodb@6.14.0:
+    resolution: {integrity: sha512-AlM6alTx98vcnk/jMMmoYuBrm4qpe1/VrbwvL2SXEHjdtJ1ZbVZmrpyjUx9mqS94e9HcemzpLn+CxzhmT7b0uw==}
     engines: {node: '>=16.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.188.0
@@ -1880,17 +1886,17 @@ packages:
         optional: true
     dependencies:
       '@mongodb-js/saslprep': 1.1.9
-      bson: 6.10.1
+      bson: 6.10.3
       mongodb-connection-string-url: 3.0.1
     dev: false
 
-  /mongoose@8.10.1:
-    resolution: {integrity: sha512-5beTeBZnJNndRXU9rxPol0JmTWZMAtgkPbooROkGilswvrZALDERY4cJrGZmgGwDS9dl0mxiB7si+Mv9Yms2fg==}
+  /mongoose@8.12.0:
+    resolution: {integrity: sha512-FXZIngJBTt/gvb6uHZHiROy3Mk3EOjNpD0m+GBRfG+twuEntnMjfxwcA94YbYIulf9LkBozt7H8w2OJpqHdUxA==}
     engines: {node: '>=16.20.1'}
     dependencies:
       bson: 6.10.1
       kareem: 2.6.3
-      mongodb: 6.13.0
+      mongodb: 6.14.0
       mpath: 0.9.0
       mquery: 5.0.0
       ms: 2.1.3

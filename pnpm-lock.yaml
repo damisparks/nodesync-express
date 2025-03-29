@@ -15,8 +15,8 @@ dependencies:
     specifier: 4.21.2
     version: 4.21.2
   helmet:
-    specifier: 8.0.0
-    version: 8.0.0
+    specifier: 8.1.0
+    version: 8.1.0
   mongoose:
     specifier: 8.13.1
     version: 8.13.1
@@ -1467,8 +1467,8 @@ packages:
       function-bind: 1.1.2
     dev: false
 
-  /helmet@8.0.0:
-    resolution: {integrity: sha512-VyusHLEIIO5mjQPUI1wpOAEu+wl6Q0998jzTxqUYGE45xCIcAxy3MsbEK/yyJUJ3ADeMoB6MornPH6GMWAf+Pw==}
+  /helmet@8.1.0:
+    resolution: {integrity: sha512-jOiHyAZsmnr8LqoPGmCjYAaiuWwjAPLgY8ZX2XrmHawt99/u1y6RgrZMTeoPfpUbV96HOalYgz1qzkRbw54Pmg==}
     engines: {node: '>=18.0.0'}
     dev: false
 

@@ -9,8 +9,8 @@ dependencies:
     specifier: 2.8.5
     version: 2.8.5
   dotenv:
-    specifier: 17.0.0
-    version: 17.0.0
+    specifier: 17.1.0
+    version: 17.1.0
   express:
     specifier: 5.1.0
     version: 5.1.0
@@ -833,8 +833,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /dotenv@17.0.0:
-    resolution: {integrity: sha512-A0BJ5lrpJVSfnMMXjmeO0xUnoxqsBHWCoqqTnGwGYVdnctqXXUEhJOO7LxmgxJon9tEZFGpe0xPRX0h2v3AANQ==}
+  /dotenv@17.1.0:
+    resolution: {integrity: sha512-tG9VUTJTuju6GcXgbdsOuRhupE8cb4mRgY5JLRCh4MtGoVo3/gfGUtOMwmProM6d0ba2mCFvv+WrpYJV6qgJXQ==}
     engines: {node: '>=12'}
     dev: false
 

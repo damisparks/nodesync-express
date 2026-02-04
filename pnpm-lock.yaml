@@ -18,8 +18,8 @@ dependencies:
     specifier: 8.1.0
     version: 8.1.0
   mongoose:
-    specifier: 9.0.1
-    version: 9.0.1
+    specifier: 9.1.6
+    version: 9.1.6
   winston:
     specifier: 3.17.0
     version: 3.17.0
@@ -1914,8 +1914,8 @@ packages:
       mongodb-connection-string-url: 7.0.0
     dev: false
 
-  /mongoose@9.0.1:
-    resolution: {integrity: sha512-aHPfQx2YX5UwAmMVud7OD4lIz9AEO4jI+oDnRh3lPZq9lrKTiHmOzszVffDMyQHXvrf4NXsJ34kpmAhyYAZGbw==}
+  /mongoose@9.1.6:
+    resolution: {integrity: sha512-ZrtgRsJKtW3od36TVXtAnrNHOO3rqhsqfVut6IzyWyJeLLeLTqW66qej/0qB37GZd5jL06nHfAceTikkfnSqbA==}
     engines: {node: '>=20.19.0'}
     dependencies:
       kareem: 3.0.0
